@@ -9,6 +9,12 @@ CREATE TABLE replies (
     reply_id INTEGER PRIMARY KEY AUTOINCREMENT,
     reply_userid TEXT NOT NULL,
     post_id INTEGER NOT NULL,
+    post_userid INTEGER NOT NULL,
     content TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    /* 
+    FOREIGN KEY (reply_userid) REFERENCES users(id), 
+    FOREIGN KEY (post_userid) REFERENCES users(id),  
+    FOREIGN KEY (post_id) REFERENCES posts(id) 
+    */     
 );
