@@ -1,12 +1,28 @@
-from flask import jsonify
+from flask import jsonify, request
 import logging
+from app.services.book_service import create_book
 
 class BookController:
+    
     def add_book(self):
+        """新增書籍"""
         logging.info("----Book_controller.add_book----")
 
-        # TODO: 實現新增書籍邏輯
-        return jsonify({"message": "Book added successfully"})
+        data = request.get_json()
+
+        # 驗證必要欄位
+        required_fields = ["書名", "ISBN", "作者", "版本", "出版年份", "書本類別", "價格", "書況"]
+        for field in required_fields:
+            if field not in data:
+                return jsonify({'error': f"'{field}' is required"}), 400
+
+        try:
+            new_book = create_book(data)
+            return jsonify({'message': 'Book added successfully', 'book': new_book.to_dict()}), 201
+        except Exception as e:
+            logging.error(f"Error adding book: {e}")
+            return jsonify({'error': 'Failed to add book', 'details': str(e)}), 500
+
     
     def update_book(self):
         logging.info("----Book_controller.update_book----")
