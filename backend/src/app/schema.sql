@@ -13,7 +13,7 @@ CREATE TABLE user (
     password TEXT NOT NULL,
     student_number INTEGER, -- not null
     phone INTEGER, -- not null
-    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE post (
@@ -22,7 +22,7 @@ CREATE TABLE post (
     book_id INTEGER, -- fk
     book_condition TEXT UNIQUE, -- not null
     price INTEGER, -- not null
-    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE book (
@@ -33,13 +33,13 @@ CREATE TABLE book (
     version TEXT, -- not null
     public_year YEAR, -- not null
     publisher TEXT, --not null
-    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE genre (
     genre_id INTEGER PRIMARY KEY AUTOINCREMENT,
     genre_name TEXT, -- not null
-    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE reply (
@@ -48,7 +48,7 @@ CREATE TABLE reply (
     to_user_id INTEGER, -- fk
     post_id INTEGER, -- fk
     message TEXT, -- not null
-    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE review (
@@ -57,5 +57,5 @@ CREATE TABLE review (
     to_user_id INTEGER, -- fk
     content TEXT, -- not null
     score INTEGER, -- not null
-    create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    create_time DATETIME DEFAULT CURRENT_TIMESTAMP
 );
